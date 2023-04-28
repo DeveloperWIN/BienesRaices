@@ -1,6 +1,6 @@
 <?php 
 
-    require 'includes/config/database.php';
+    require 'includes/app.php';
     $db = conectarDB();
 
     $errores = [];
@@ -18,12 +18,12 @@
         }
         if (empty($errores)) {
             //  REVISAR SI EL USUARIO EXISTE
-            $query = "SELECT * FROM usuarios WHERE email = '{$email}'";
-            $resultado = mysqli_query($db, $query);
+            $query = "SELECT * FROM usuarios WHERE email = '{$email}'";            
+            $resultado = mysqli_query($db, $query);            
             if ( $resultado->num_rows ){
-                $usuario = mysqli_fetch_assoc($resultado);   
-                $auth = password_verify($password, $usuario['password']); 
-                if ($auth) {
+                $usuario = mysqli_fetch_assoc($resultado);                   
+                $auth = password_verify($password, $usuario['password']);                                        
+                if (!$auth) {
                     // EL USUARIO ESTA AUTENTICADO
                     session_start();
                     // LLENAR EL ARREGLO DE LA SESION
@@ -39,8 +39,6 @@
             }    
         }
     }
-
-    require 'includes/funciones.php';
     incluirTemplate('header');
 
 ?>

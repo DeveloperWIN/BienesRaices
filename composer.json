@@ -1,0 +1,19 @@
+{
+    "name": "oscaralejandrocarrascosepulveda/bienes-raices",
+    "description": "Creando proyecto con POO",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./clases"
+        }
+    },
+    "authors": [
+        {
+            "name": "DeveloperMAC2023",
+            "email": "DeveloperMAC2023@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    }
+}
